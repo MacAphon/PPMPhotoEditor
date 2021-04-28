@@ -12,7 +12,16 @@ public class Main {
         try {
             Scanner sc = new Scanner(new File(activeFileIn));
             PrintWriter pw = new PrintWriter(activeFileOut);
-            String s;
+            String s = sc.next();
+
+            if ( !(s.equals("p3") || s.equals("P3")) ){
+                System.out.println("Selected input file is not a valid PPM file. Aborting");
+                System.exit(0);
+            }
+
+            int width = Integer.parseInt(sc.next());
+            int height = Integer.parseInt(sc.next());
+            int cDepth = Integer.parseInt(sc.next());
 
             while(sc.hasNext()){
                 s = sc.next();
