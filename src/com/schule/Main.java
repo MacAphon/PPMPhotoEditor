@@ -6,8 +6,8 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-	    String activeFileIn = "images/input.txt"; //args[args.length-2];
-        String activeFileOut = "images/output.txt"; //args[args.length-1];
+	    String activeFileIn = args[args.length-2]; //"images/input.txt";
+        String activeFileOut = args[args.length-1]; //"images/output.txt";
 
         try {
             Scanner sc = new Scanner(new File(activeFileIn));
@@ -21,7 +21,7 @@ public class Main {
             sc.close();
             pw.close();
         } catch (Exception e) {
-            // do nothing.
+            e.printStackTrace();
         }
     }
 }
