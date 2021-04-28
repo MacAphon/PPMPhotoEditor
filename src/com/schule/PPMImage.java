@@ -107,7 +107,7 @@ public class PPMImage {
     // black and white
     public void bw(String mode){
         switch (mode){
-            
+
             case "soft":
                 for (int i = 0; i < height; i++) {
                     for (int j = 0; j < width; j++) {
@@ -140,9 +140,29 @@ public class PPMImage {
                             image[i][j].setB(0);
                         }
                     }
-
                 }
                 break;
+        }
+    }
+
+    // takes the average of a 5x5 square around the current pixel
+    public void blur(){
+        for (int i = 2; i < height-2; i++) {
+            for (int j = 2; j < width-2; j++) {
+                int[][] rVals = new int[5][5];
+                int[][] gVals = new int[5][5];
+                int[][] bVals = new int[5][5];
+                for (int k = 0; k < 5; k++){
+                    for (int l = 0; l < 5; l++){
+                        rVals[k][l] = image[i+k-2][j+l-2].getR();
+                        gVals[k][l] = image[i+k-2][j+l-2].getG();
+                        bVals[k][l] = image[i+k-2][j+l-2].getB();
+                    }
+                }
+                image[i][j].setR((int) Arrays.stream(rVals).flatMapToInt(Arrays::stream).average().getAsDouble());
+                image[i][j].setG((int) Arrays.stream(gVals).flatMapToInt(Arrays::stream).average().getAsDouble());
+                image[i][j].setB((int) Arrays.stream(bVals).flatMapToInt(Arrays::stream).average().getAsDouble());
+            }
         }
     }
 
