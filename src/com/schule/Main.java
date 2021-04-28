@@ -28,6 +28,9 @@ public class Main {
         if(Arrays.asList(args).contains("--bw-hard")){
             file.bw("hard");
         }
+        if(Arrays.asList(args).contains("--blur")){
+            file.blur();
+        }
 
         file.writeFile(activeFileOut);
     }
