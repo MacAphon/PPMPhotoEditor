@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.*;
 
 public class PPMImage {
-    public PPMImage(String fileIn, String fileOut){
+
+    public PPMImage(String fileIn){
         try {
             Scanner sc = new Scanner(new File(fileIn));
-            PrintWriter pw = new PrintWriter(fileOut);
             String s = sc.next();
 
             if ( !(s.equals("p3") || s.equals("P3")) ){
@@ -19,14 +19,19 @@ public class PPMImage {
             int height = Integer.parseInt(sc.next());
             int cDepth = Integer.parseInt(sc.next());
 
+            int r, g, b;
+
             Pixel[][] image = new Pixel[height][width];
 
-            while(sc.hasNext()){
-                s = sc.next();
-                pw.write(s + " ");
+            for(int i = 0; i < height; i++){
+                for(int j = 0; j < width; j++) {
+                    r = Integer.parseInt(sc.next());
+                    g = Integer.parseInt(sc.next());
+                    b = Integer.parseInt(sc.next());
+                    image[i][j] = new Pixel(r, g, b);
+                }
             }
             sc.close();
-            pw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
