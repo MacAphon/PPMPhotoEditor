@@ -63,5 +63,88 @@ public class PPMImage {
         }
     }
 
+    // isolates the specified color channel
+    public void channel(String color){
+        switch (color) {
+            case "red":
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        image[i][j].setG(0);
+                        image[i][j].setB(0);
+                    }
+                }
+                break;
+            case "green":
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        image[i][j].setR(0);
+                        image[i][j].setB(0);
+                    }
+                }
+                break;
+            case "blue":
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        image[i][j].setR(0);
+                        image[i][j].setG(0);
+                    }
+                }
+                break;
+        }
+    }
+
+    public void invertColors() {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                image[i][j].setR(cDepth - image[i][j].getR());
+                image[i][j].setG(cDepth - image[i][j].getG());
+                image[i][j].setB(cDepth - image[i][j].getB());
+            }
+
+        }
+    }
+
+    // black and white
+    public void bw(String mode){
+        switch (mode){
+            
+            case "soft":
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        double rLoc = image[i][j].getR();
+                        double gLoc = image[i][j].getG();
+                        double bLoc = image[i][j].getB();
+                        int av = (int) (rLoc+gLoc+bLoc)/3;
+                        image[i][j].setR(av);
+                        image[i][j].setG(av);
+                        image[i][j].setB(av);
+                    }
+
+                }
+                break;
+
+            case "hard":
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        double rLoc = image[i][j].getR();
+                        double gLoc = image[i][j].getG();
+                        double bLoc = image[i][j].getB();
+                        int av = (int) (rLoc+gLoc+bLoc)/3;
+                        if(av > cDepth/2){
+                            image[i][j].setR(cDepth);
+                            image[i][j].setG(cDepth);
+                            image[i][j].setB(cDepth);
+                        } else {
+                            image[i][j].setR(0);
+                            image[i][j].setG(0);
+                            image[i][j].setB(0);
+                        }
+                    }
+
+                }
+                break;
+        }
+    }
+
 
 }
