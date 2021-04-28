@@ -43,21 +43,21 @@ public class PPMImage {
 
     public void writeFile(String fileOut){
         try {
-            PrintWriter pw = new PrintWriter(new File(fileOut));
+            PrintWriter pw = new PrintWriter(fileOut);
 
             pw.println("P3");
-            pw.write(String.valueOf(width) + " ");
-            pw.println(String.valueOf(height));
-            pw.println(String.valueOf(cDepth));
+            pw.write(width + " ");
+            pw.println(height);
+            pw.println(cDepth);
 
             for(int i = 0; i < height; i++){
                 for(int j = 0; j < width; j++) {
-                    pw.write(String.valueOf(image[i][j].getR()) + " ");
-                    pw.write(String.valueOf(image[i][j].getG()) + " ");
-                    pw.write(String.valueOf(image[i][j].getB()) + " ");
+                    pw.write(image[i][j].getR() + " ");
+                    pw.write(image[i][j].getG() + " ");
+                    pw.write(image[i][j].getB() + " ");
                 }
             }
-
+            pw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
