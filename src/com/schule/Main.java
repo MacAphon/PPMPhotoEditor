@@ -28,6 +28,14 @@ public class Main {
                 case "--bw-hard":
                     file.bw("hard");
                     break;
+                case "--mean-blur":
+                    file.kernel(new int[][]{
+                                    {1,1,1,1,1},
+                                    {1,1,1,1,1},
+                                    {1,1,1,1,1},
+                                    {1,1,1,1,1},
+                                    {1,1,1,1,1}},
+                            null, 25);
                 case "--gauss-blur":
                     file.kernel(new int[][]{
                                     {1, 4, 6, 4,1},

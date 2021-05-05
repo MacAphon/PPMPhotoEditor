@@ -122,19 +122,19 @@ public class PPMImg {
                             try {
                                 val[k][l] = (int) (img[i + k - 2][j + l - 2].getR()
                                         + img[i + k - 2][j + l - 2].getR()
-                                        + img[i + k - 2][j + l - 2].getR()) / 3 * vals[k][l];
+                                        + img[i + k - 2][j + l - 2].getR()) / 3;
                                 val2[k][l] = (int) (img[i + k - 2][j + l - 2].getR()
                                         + img[i + k - 2][j + l - 2].getR()
-                                        + img[i + k - 2][j + l - 2].getR()) / 3 * vals2[k][l];
+                                        + img[i + k - 2][j + l - 2].getR()) / 3;
                             }catch (IndexOutOfBoundsException e){
                                 val[k][l] = 0;
                                 val2[k][l] = 0;
                             }
                         } else {
                             try{
-                                rVal[k][l] = img[i+k-2][j+l-2].getR() * vals[k][l];
-                                gVal[k][l] = img[i+k-2][j+l-2].getG() * vals[k][l];
-                                bVal[k][l] = img[i+k-2][j+l-2].getB() * vals[k][l];
+                                rVal[k][l] = img[i+k-2][j+l-2].getR() ;//* vals[k][l];
+                                gVal[k][l] = img[i+k-2][j+l-2].getG() ;//* vals[k][l];
+                                bVal[k][l] = img[i+k-2][j+l-2].getB() ;//* vals[k][l];
                             }catch (IndexOutOfBoundsException e) {
                                 rVal[k][l] = 0;
                                 gVal[k][l] = 0;
@@ -149,9 +149,9 @@ public class PPMImg {
                     horiz = (int) Math.pow(Arrays.stream(val2).flatMapToInt(Arrays::stream).average().getAsDouble(), 2);
                     img2[i][j].setRGB((int) Math.sqrt(vert + horiz));
                 } else {
-                    img2[i][j].setR((int) Arrays.stream(rVal).flatMapToInt(Arrays::stream).average().getAsDouble() / value);
-                    img2[i][j].setG((int) Arrays.stream(gVal).flatMapToInt(Arrays::stream).average().getAsDouble() / value);
-                    img2[i][j].setB((int) Arrays.stream(bVal).flatMapToInt(Arrays::stream).average().getAsDouble() / value);
+                    img2[i][j].setR((int) Arrays.stream(rVal).flatMapToInt(Arrays::stream).average().getAsDouble() );///valueb);
+                    img2[i][j].setG((int) Arrays.stream(gVal).flatMapToInt(Arrays::stream).average().getAsDouble() );///valueb);
+                    img2[i][j].setB((int) Arrays.stream(bVal).flatMapToInt(Arrays::stream).average().getAsDouble() );///valueb);
                 }
             }
         }
