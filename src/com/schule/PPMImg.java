@@ -122,10 +122,10 @@ public class PPMImg {
                             try {
                                 val[k][l] = (int) (img[i + k - 2][j + l - 2].getR()
                                         + img[i + k - 2][j + l - 2].getR()
-                                        + img[i + k - 2][j + l - 2].getR()) / 3;
+                                        + img[i + k - 2][j + l - 2].getR()) / 3 * vals[k][l];
                                 val2[k][l] = (int) (img[i + k - 2][j + l - 2].getR()
                                         + img[i + k - 2][j + l - 2].getR()
-                                        + img[i + k - 2][j + l - 2].getR()) / 3;
+                                        + img[i + k - 2][j + l - 2].getR()) / 3 * vals2[k][l];
                             }catch (IndexOutOfBoundsException e){
                                 val[k][l] = 0;
                                 val2[k][l] = 0;
